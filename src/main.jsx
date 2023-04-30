@@ -1,8 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
 import './index.css'
 import Main from './layout/Main.jsx';
+import Home from './components/Home.jsx';
+import Login from './components/Login.jsx';
+import News from './components/News.jsx';
+import Destination from './components/Destination.jsx';
+import Blog from './components/Blog.jsx';
+import Contact from './components/Contact.jsx';
 
 const router = createBrowserRouter([
   {
@@ -18,33 +23,29 @@ const router = createBrowserRouter([
         element: <Login></Login>
       },
       {
-        path: '/phoneverify',
-        element: <PhoneVerify></PhoneVerify>
-      },
-      {
         path: '/register',
         element: <Register></Register>
       },
       {
-        path: '/profile',
-        element: <PrivateRoute><Profile></Profile></PrivateRoute>
+        path: '/news',
+        element: <News></News>
       },
       {
-        path: '/shopping',
-        element:<Shop></Shop>
+        path: '/destination',
+        element:<Destination></Destination>
       },
       {
-        path: '/orders',
-        element: <Orders></Orders>
+        path: '/blog',
+        element: <Blog></Blog>
       },
       {
-        path: '/checkout',
-        element: <PrivateRoute><Checkout></Checkout></PrivateRoute>
+        path: '/contact',
+        element: <Contact></Contact>
       },
-      {
-        path: '/profile',
-        element: <PrivateRoute><Profile></Profile></PrivateRoute>
-      }
+      // {
+      //   path: '/profile',
+      //   element: <PrivateRoute><Profile></Profile></PrivateRoute>
+      // }
     ]
   },
 
@@ -52,6 +53,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <AuthProviders>
+      <RouterProvider router={router} />
+    </AuthProviders>
   </React.StrictMode>,
 )
